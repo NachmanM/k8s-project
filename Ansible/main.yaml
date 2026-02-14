@@ -1,0 +1,8 @@
+- name: test
+  hosts: aws_ec2
+  vars:
+    ansible_python_interpreter: /path/to/your/venv/bin/python3
+  tasks:
+  - name: test connection
+    debug:
+      msg: Worked for {{ ansible_host }}
