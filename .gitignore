@@ -1,8 +1,16 @@
+# Terraform
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+.terraformrc
+terraform.rc
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
-.terraform
+
+
 # C extensions
 *.so
 

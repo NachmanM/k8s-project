@@ -12,3 +12,7 @@ resource "aws_instance" "k8s-node" {
   }
 }
 
+resource "aws_ec2_instance_state" "start_instance" {
+  instance_id = aws_instance.k8s-node.id
+  state       = "running" 
+}
