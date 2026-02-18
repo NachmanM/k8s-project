@@ -4,26 +4,46 @@ metadata:
   name: ingress-cluster-role
 rules:
 - apiGroups:
-    - ""
+  - ""
   resources:
-    - configmaps
-    - endpoints
-    - nodes
-    - pods
-    - secrets
-    - services
+  - configmaps
+  - endpoints
+  - nodes
+  - pods
+  - secrets
+  - services
   verbs:
-    - get
-    - list
-    - watch
+  - get
+  - list
+  - watch
 - apiGroups:
-    - networking.k8s.io
+  - networking.k8s.io
   resources:
-    - ingresses
-    - ingresses/status
-    - ingressclasses
+  - ingresses
+  - ingresses/status
+  - ingressclasses
   verbs:
-    - get
-    - list
-    - watch
-    - update
+  - get
+  - list
+  - watch
+  - update
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - get
+  - list
+  - watch

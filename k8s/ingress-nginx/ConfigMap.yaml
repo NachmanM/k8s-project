@@ -3,5 +3,4 @@ kind: ConfigMap
 metadata:
   name: ingress-configmap
   namespace: ingress-nginx
-spec:
-  data: {}
+data: {}
