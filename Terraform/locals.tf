@@ -11,12 +11,12 @@ locals {
   instances_config = {
     master_node = {
       amount        = 1
-      instance_type = "t3.large"
+      instance_type = "t3.small"
       tag           = "tf-nach-master-node"
     }
     worker_node = {
       amount        = 2
-      instance_type = "t3.medium"
+      instance_type = "t3.small"
       tag           = "tf-nach-working-node"
     }
   }
