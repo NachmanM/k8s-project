@@ -1,0 +1,10 @@
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: wp-svc 
+spec:
+  selector:
+    app: my-wp
+  ports:
+  - port: 80
+    targetPort: 80

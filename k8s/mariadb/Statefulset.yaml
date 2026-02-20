@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mariadb
+spec:
+  serviceName: "mariadb"
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-db
+  template:
+    metadata:
+      labels:
+        app: my-db
+    spec:
+      containers:
+      - name: my-app
+        image: 992382545251.dkr.ecr.us-east-1.amazonaws.com/nach-mariadb:latest
+        imagePullPolicy: Always # Enforces image pull to avoid using old local images
+        command: ['--default-authentication-plugin=mysql_native_password']
+        ports:
+        - containerPort: 3306
+        env:
+        - secretRef: 
+            name: wordpress-env-secret
+      imagePullSecrets:
+      - name: regcred # Name of the secret created in Step 2
+      volumeClaimTemplates:
+      - metadata:
+        name: www
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+
