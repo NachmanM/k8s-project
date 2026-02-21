@@ -32,6 +32,12 @@ variable "security_group_id" {
   description = "Security group id from the module sg-k8s, for the EC2 instance nodes"
 }
 
+variable "instance_profile_name" {
+  type        = string
+  description = "Instance profile name for the k8s nodes"
+}
+
+
 # variable "region" {
 #     type = string
 #     description = "AWS region"

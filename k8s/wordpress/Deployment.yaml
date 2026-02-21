@@ -15,12 +15,11 @@ spec:
       containers:
       - name: my-app
         image: 992382545251.dkr.ecr.us-east-1.amazonaws.com/nach-wp:latest
-        imagePullPolicy: Always # Enforces image pull to avoid using old local images
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         envFrom:
-        - secretRef: 
+        - secretRef:
             name: wordpress-env-secret
       imagePullSecrets:
-      - name: regcred # Name of the secret created in Step 2
-
+      - name: regcred

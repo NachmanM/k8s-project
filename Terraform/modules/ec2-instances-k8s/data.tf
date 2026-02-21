@@ -17,3 +17,4 @@ data "aws_ami" "ami" {
     values = ["x86_64"]
   }
 }
+

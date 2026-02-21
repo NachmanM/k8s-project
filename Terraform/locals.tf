@@ -6,6 +6,7 @@ locals {
   region        = "us-east-1"
   global_tag    = "k8s-terraform-sandbox-nachman"
   vpc_name      = "Default VPC"
+  role_name     = "nach-ecr-download-token"
 
 
   instances_config = {

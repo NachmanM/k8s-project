@@ -9,9 +9,21 @@
 
   tasks:
   - name: test connection
-    debug:
-      msg: Worked for {{ ansible_host }}
+    apt:
+      name: unzip
+      state: present 
+      update_cache: yes
 
-  roles:
-  - role: geerlingguy.containerd
-  - role: geerlingguy.kubernetes
+  - name: install AWS CLI
+    ansible.builtin.include_role:
+      name: deekayen.awscli2
+    when: kubernetes_role == "control_plane"
+  
+  - name: install Helm
+    ansible.builtin.include_role:
+      name: geerlingguy.helm
+    when: kubernetes_role == "control_plane"
+
+  # roles:
+  # - role: geerlingguy.containerd
+  # - role: geerlingguy.kubernetes
