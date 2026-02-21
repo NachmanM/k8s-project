@@ -2,7 +2,7 @@
   hosts: aws_ec2
   become: true
   become_user: root
-  var_files:
+  vars_files:
   - vars/bashrc_update.yaml
   - vars/copy_ssh.yaml
   - vars/k8s.yaml
@@ -14,6 +14,16 @@
       name: unzip
       state: present 
       update_cache: yes
+    when: kubernetes_role == "control_plane"
+  
+  - name: install AWS CLI
+    ansible.builtin.include_role:
+      name: deekayen.awscli2
+    when: kubernetes_role == "control_plane"
+
+  - name: install Helm
+    ansible.builtin.include_role:
+      name: geerlingguy.helm
     when: kubernetes_role == "control_plane"
   
   - name: Copy private SSH key to remote host
@@ -38,28 +48,19 @@
     when: kubernetes_role == "control_plane"
 
   - name: Copy script to remote node
- 
     ansible.builtin.copy:
       src: "{{ script_src }}"
       dest: "{{ remote_script_path }}"
       mode: '0755' # Grants execute permissions
+    when: kubernetes_role == "control_plane"
 
   - name: Execute the copied script
     ansible.builtin.command:
       cmd: "{{ remote_script_path }}"
     register: command_outpu
-
-
-  - name: install AWS CLI
-    ansible.builtin.include_role:
-      name: deekayen.awscli2
     when: kubernetes_role == "control_plane"
   
-  - name: install Helm
-    ansible.builtin.include_role:
-      name: geerlingguy.helm
-    when: kubernetes_role == "control_plane"
 
-  # roles:
-  # - role: geerlingguy.containerd
-  # - role: geerlingguy.kubernetes
+  roles:
+  - role: geerlingguy.containerd
+  - role: geerlingguy.kubernetes
