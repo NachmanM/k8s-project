@@ -16,16 +16,11 @@ spec:
       containers:
       - name: my-app
         image: 992382545251.dkr.ecr.us-east-1.amazonaws.com/nach-mariadb:latest
-<<<<<<< HEAD
         imagePullPolicy: Always # Enforces image pull to avoid using old local images
-=======
-        imagePullPolicy: Always
->>>>>>> 0c965ee (aws cli and helm installed sucefully with ansible)
         args: ['--default-authentication-plugin=mysql_native_password']
         ports:
         - containerPort: 3306
         envFrom:
-<<<<<<< HEAD
         - secretRef: 
             name: mariadb-env-secret
       imagePullSecrets:
@@ -39,20 +34,4 @@ spec:
         requests:
           storage: 1Gi
 
-=======
-        - secretRef:
-            name: mysql-env-secret
-        volumeMounts:
-        - name: mariadb-data
-          mountPath: /var/lib/mysql
-      imagePullSecrets:
-      - name: regcred
-  volumeClaimTemplates:
-  - metadata:
-      name: mariadb-data
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      resources:
-        requests:
-          storage: 1Gi
->>>>>>> 0c965ee (aws cli and helm installed sucefully with ansible)
+
