@@ -9,4 +9,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: ingress-sa
-    apiGroup: rbac.authorization.k8s.io
+    namespace: ingress-nginx
+    apiGroup: ""
