@@ -29,3 +29,14 @@ kubectl apply -f /k8s-project/k8s/ingress-nginx/NameSpace.yaml
 kubectl wait --for=condition=Active namespace/ingress-nginx --timeout=3s
 
 kubectl apply -R -f /k8s-project/k8s/
+
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+# Install the stack (creates the namespace automatically)
+helm install prom-stack prometheus-community/kube-prometheus-stack \
+  --namespace monitoring \
+  --create-namespace
+
+kubectl apply -f /k8s-project/Monitor/
