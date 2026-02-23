@@ -1,6 +1,7 @@
 #!/bin/bash
 
 terraform -chdir=./Terraform apply -auto-approve
+sleep 10
 
 source ./Ansible/venv/bin/activate
 export ANSIBLE_CONFIG=./Ansible/ansible.cfg

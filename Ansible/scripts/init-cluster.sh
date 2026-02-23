@@ -24,6 +24,7 @@ helm upgrade --install aws-ebs-csi-driver \
   --namespace kube-system \
   --version 2.55.1
 
+
 kubectl apply -f /k8s-project/k8s/ingress-nginx/NameSpace.yaml
 # Wait until the namespace is actually ready
 kubectl wait --for=condition=Active namespace/ingress-nginx --timeout=3s
@@ -37,6 +38,7 @@ helm repo update
 # Install the stack (creates the namespace automatically)
 helm install prom-stack prometheus-community/kube-prometheus-stack \
   --namespace monitoring \
-  --create-namespace
+  --create-namespace \
+  -f /k8s-project/Monitor/prometheus-values.yaml
 
 kubectl apply -f /k8s-project/Monitor/

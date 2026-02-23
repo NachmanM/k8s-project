@@ -31,7 +31,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_http" {
 resource "aws_vpc_security_group_ingress_rule" "allow_custom_ports" {
   security_group_id = aws_security_group.allow_http_ssh.id
   from_port         = 30000
-  to_port           = 30100
+  to_port           = 32000
   ip_protocol       = "tcp"
   cidr_ipv4         = "0.0.0.0/0"
 }

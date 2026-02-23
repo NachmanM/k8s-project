@@ -11,6 +11,13 @@ resource "aws_instance" "k8s-node" {
     env  = var.global_tag
 
   }
+
+  root_block_device {
+    volume_size           = 32
+    volume_type           = "gp2"
+    delete_on_termination = true
+  }
+
 }
 
 
