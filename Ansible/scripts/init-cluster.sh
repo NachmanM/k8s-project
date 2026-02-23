@@ -39,6 +39,6 @@ helm repo update
 helm install prom-stack prometheus-community/kube-prometheus-stack \
   --namespace monitoring \
   --create-namespace \
-  -f /k8s-project/Monitor/prometheus-values.yaml
+  -f /k8s-project/Monitor/grafana-values.yaml
 
-kubectl apply -f /k8s-project/Monitor/
+kubectl apply -f /k8s-project/Monitor/k8s/
