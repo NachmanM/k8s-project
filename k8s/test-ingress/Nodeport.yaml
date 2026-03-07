@@ -5,8 +5,8 @@ metadata:
 spec:
   type: NodePort
   selector:
-   app: my-wp
+   app: nginx
   ports:
   - port: 80
     targetPort: 80
-    nodePort: 30001 
+    nodePort: 30007
