@@ -8,15 +8,12 @@ workload deployment, and monitoring — all driven by a single command.
 ![Ansible](https://img.shields.io/badge/Ansible-Automation-EE0000?logo=ansible)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326CE5?logo=kubernetes)
 ![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?logo=amazonaws)
-<img width="1561" height="227" alt="image" src="https://github.com/user-attachments/assets/e9c54884-0368-442a-bbbf-f87fac22051a" />
 
 ## Architecture
-```
-apply.sh
-  ├── Terraform apply       → EC2 master + ASG worker nodes, ALB/NLB, SGs, IAM, Route53
-  └── Ansible playbook      → kubeadm init on master, worker join, CNI (Flannel)
-                                └── k8s manifests applied → workloads + monitoring stack
-```
+<img width="1561" height="227" alt="image" src="https://github.com/user-attachments/assets/e9c54884-0368-442a-bbbf-f87fac22051a" />
+
+
+
 
 ## Stack
 
